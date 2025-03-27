@@ -6,16 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Portfolio Website Design</title>
     <link rel="stylesheet" href="style.css">
-    <!----Font awesome cdn  font icon css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        /* Add smooth scrolling to all links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Style for section placeholders */
+        section {
+            min-height: 100vh;
+            padding: 80px 0;
+        }
+    </style>
 </head>
 <body>
-     <div class="hero-header">
+     <div class="hero-header" id="home">
         <div class="wrapper">
             <header>
                 <div class="logo">
                     <i class="fa-solid fa-a"></i>
-                    <div class="logo-text">kipruto Vincent</div>
+                    <div class="logo-text">KiprutoPortfolio</div>
                 </div>
                 <nav>
                     <div class="togglebtn">
@@ -24,11 +35,11 @@
                         <span></span>
                     </div>
                     <ul class="navlinks">
-                        <li><a href="#">Home</a></li>
-                        <!-- <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Resume</a></li>
-                        <li><a href="#">Blog</a></li> -->
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </header>
@@ -37,45 +48,116 @@
                     <img src="images/main_photo.jpg" alt="profile pic">
                  </div>
                  <div class="hero-text">
-                    <h5>Hi I'm <span class="input">Backend Developer</span></h5>
+                    <h5>HELLO, I'M VINCENT KIPRUTO<span class="input">SOFTWARE ENGINEER</span></h5>
                     <h1>Vincent kipruto</h1>
                     <p> I'm a Backend Developer who specialized in django framework, react native for app
                         Development and mysql.
+                        I Develop Responsive Web Applications.
+                        I am a self-motivated and hardworking individual with a passion for technology and a desire to learn and grow in the field of software development.
                     </p>
 
                     <div class="btn-group">
-                       <a href="#" class="btn active">Download CV</a>
-                       <a href="" class="btn">Contact</a>
+                       <a href="VINCENT KIPRUTO (1) (1).pdf" download class="btn active">Download CV</a>
+                       <a href="#contact" class="btn">Contact</a>
                     </div>
 
                     <div class="social">
-                        <a href="https://www.linkedin.com/in/vincent-kipruto-54b2a4249/?trk=opento_sprofile_details"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/vincent_kipruto_1/"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://x.com/jennavinn178"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/vincent-kipruto-54b2a4249/?trk=opento_sprofile_details" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/vincent_kipruto_1/" title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/jennavinn178" title="Twitter Profile"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                  </div>
             </div>
         </div>
      </div>
-     <!---typed js for typing text effect-->
+     
+     <!-- Portfolio Section -->
+     <section id="portfolio" class="portfolio-section">
+        <div class="wrapper">
+            <h2>My Portfolio</h2>
+            <p>This section will showcase your projects.</p>
+            <!-- Add your portfolio items here -->
+        </div>
+     </section>
+     
+     <!-- Resume Section -->
+     <section id="resume" class="resume-section">
+        <div class="wrapper">
+            <h2>My Resume</h2>
+            <p>This section will display your professional experience and skills.</p>
+            <!-- Add resume content here -->
+        </div>
+     </section>
+     
+     <!-- Blog Section -->
+     <section id="blog" class="blog-section">
+        <div class="wrapper">
+            <h2>My Blog</h2>
+            <p>This section will contain your blog posts.</p>
+            <!-- Add blog content here -->
+        </div>
+     </section>
+     
+     <!-- Contact Section -->
+     <section id="contact" class="contact-section">
+        <div class="wrapper">
+            <h2>Contact Me</h2>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+     </section>
+
      <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
      <script>
-        /** creating button click show hide navbar **/
-        var togglebtn=document.querySelector(".togglebtn");
-        var nav=document.querySelector(".navlinks");
-        var links=document.querySelector(".navlinks li");
+        // Mobile menu toggle
+        var togglebtn = document.querySelector(".togglebtn");
+        var nav = document.querySelector(".navlinks");
+        var navLinks = document.querySelectorAll(".navlinks li a");
 
         togglebtn.addEventListener("click", function(){
             this.classList.toggle("click");
             nav.classList.toggle("open");
-        })
+        });
 
-        var typed=new Typed(".input",{
-            strings:["Backend Developer","Web Developer"],
-            typedSpeed:50,
-            backSpeed:40,
-            loop:true
-        })
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("open");
+                togglebtn.classList.remove("click");
+            });
+        });
+
+        // Typed.js effect
+        var typed = new Typed(".input", {
+            strings: ["Backend Developer", "Web Developer"],
+            typedSpeed: 50,
+            backSpeed: 40,
+            loop: true
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            console.log('Contact Form Submitted:', { name, email, message });
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            this.reset();
+        });
      </script>
 </body>
 </html>
